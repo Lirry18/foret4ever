@@ -1,16 +1,6 @@
 @font-face {
-  font-family: 'Rubik';
-  src: url('Rubik-VariableFont_wght.ttf') format('truetype');
-}
-
-@font-face {
-  font-family: 'Karla';
-  src: url('Karla-VariableFont_wght.ttf') format('truetype');
-}
-
-@font-face {
   font-family: 'Mentalist';
-  src: url('Mentalist.otf') format('opentype');
+  src: url('./assets/Mentalist.otf') format('opentype');
 }
 
 body{
@@ -38,6 +28,7 @@ header {
 h1{
 	color: aliceblue;
 	font-family: 'Mentalist';
+	font-size: medium;
 }
 
 #brieftext{
@@ -49,6 +40,7 @@ h1{
 h2{
 	color: black;
 	font-family: 'Mentalist';
+	font-size: medium;
 }
 
 #demo{
@@ -60,7 +52,8 @@ h2{
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 100%;
+	width: 80%;
+	padding: 10%;
   }
 
   .centerhome {

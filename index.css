@@ -21,6 +21,15 @@ body{
 	height: 100px;
 }
 
+
+.heighthalf{
+	height: 50px;
+}
+
+.heightquarter{
+	height: 25px;
+}
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -29,6 +38,12 @@ header {
 h1{
 	color: aliceblue;
 	font-family: 'Mentalist';
+}
+
+#brieftext{
+	font-size: 10;
+	color: aliceblue;
+	font-family: 'Mentalist';	 
 }
 
 h2{
@@ -46,4 +61,12 @@ h2{
 	margin-left: auto;
 	margin-right: auto;
 	width: 40%;
+  }
+
+  .centerhome {
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 70%;
   }

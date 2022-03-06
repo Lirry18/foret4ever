@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Mentalist';
-  src: url('./assets/Mentalist.otf') format('opentype');
+  src: url('./assets/Mentalist.woff2') format ('woff2');
 }
 
 body{

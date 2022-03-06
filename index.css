@@ -13,13 +13,31 @@
   src: url('Mentalist.otf') format('opentype');
 }
 
+body{
+	background-color: darkslategray;
+}
+
+.height{
+	height: 100px;
+}
+
 header {
 	display: flex;
 	justify-content: space-between;
 }
 
 h1{
+	color: aliceblue;
 	font-family: 'Mentalist';
+}
+
+h2{
+	color: black;
+	font-family: 'Mentalist';
+}
+
+#demo{
+	color: black;
 }
 
 .center {

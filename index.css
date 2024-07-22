@@ -1,12 +1,106 @@
 @font-face {
-  font-family: 'Mentalist';
-  src: url('./assets/Mentalist.woff2') format('woff2'),
-  url('./assets/Mentalist.ttf') format('truetype');
+  font-family: 'StraightToHell';
+  src: url('./assets/StraightToHellBB.ttf') format('woff2'),
+  url('./assets/StraightToHellBB.ttf') format('truetype');
 }
 
 body{
-	background-color: darkslategray;
+	background-color: #181818;
+	background: url('./assets/foret-forever.png') no-repeat center center fixed;
+    background-size: cover;
+	color: white;
+	margin: 0;
+	padding: 0;
 }
+
+.audio-controls {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+}
+.audio-controls button {
+	background-color: rgba(172, 0, 0, 0.0);
+	color: red;
+	border: none;
+	padding: 10px 20px;
+	margin: 0 10px;
+	font-size: 16px;
+	cursor: pointer;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	transition: background-color 0.3s ease;
+}
+.audio-controls button:hover {
+	background-color: rgba(255, 255, 255, 0.5);
+	color: black;
+}
+.audio-controls i {
+	margin-right: 8px;
+}
+
+#content.hidden {
+    display: none;
+}
+
+#content.visible {
+    opacity: 1;
+}
+
+.center {
+    text-align: center;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.centerhome {
+	background: rgba(0, 0, 0, 0.7);
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-radius: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+	border-radius: 5px;
+	background: ghostwhite;
+    cursor: crosshair;
+	font-family: 'StraightToHell';
+}
+
+.height {
+    height: 20px;
+}
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+#overlay button {
+    padding: 20px 40px;
+    font-size: 24px;
+    cursor: pointer;
+    background: white;
+	font-family: 'StraightToHell';
+    border: none;
+    border-radius: 5px;
+}
+
 
 .height{
 	height: 75px;
@@ -28,31 +122,56 @@ header {
 
 h1{
 	color: aliceblue;
-	font-family: 'Orbitron';
+	font-family: 'StraightToHell';
 	font-style: 'bold';
+	text-shadow: 
+	-1px -1px 0 #000,  
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	1px 1px 0 #000;
+}
+
+.bullet-point {
+	margin-bottom: 20px;
 }
 
 #brieftext{
+	font-size: 14px;
+	color: aliceblue;
+	font-family: 'StraightToHell'; 
+	text-shadow: 
+	-1px -1px 0 #000,  
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	1px 1px 0 #000;
+}
+#brieftextklein{
 	font-size: 12px;
 	color: aliceblue;
-	font-family: 'Orbitron'; 
+	font-family: 'StraightToHell'; 
+
 }
 
 #paktext{
 	font-size: 15px;
 	color: aliceblue;
-	font-family: 'Orbitron';
+	font-family: 'StraightToHell';
 }
 
 h2{
 	color: black;
-	font-family: 'Orbitron';
+	font-family: 'StraightToHell';
 	font-style: 'bold';
+	text-shadow: 
+	-1px -1px 0 #000,  
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	1px 1px 0 #000;
 }
 
 #demo{
-	color: black;
-	font-size: 1.6rem;
+	color: rgb(163, 0, 0);
+	font-size: 2rem;
 }
 
 

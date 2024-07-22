@@ -1,58 +1,291 @@
 <!DOCTYPE html>
-<html>
-	<script>
-		// Set the date we're counting down to
-		var countDownDate = new Date("May 6, 2022 17:00:00").getTime();
-		
-		// Update the count down every 1 second
-		var x = setInterval(function() {
-		
-		  // Get today's date and time
-		  var now = new Date().getTime();
-		
-		  // Find the distance between now and the count down date
-		  var distance = countDownDate - now;
-		
-		  // Time calculations for days, hours, minutes and seconds
-		  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-		  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-		  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-		  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-		
-		  // Display the result in the element with id="demo"
-		  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-		  + minutes + "m " + seconds + "s ";
-		
-		  // If the count down is finished, write some text
-		  if (distance < 0) {
-			clearInterval(x);
-			document.getElementById("demo").innerHTML = "EXPIRED";
-		  }
-		}, 1000);
-		</script>
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="index.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-	<title>Mission TT</title>
-</head>
-<body>
-	 
-	<div class="center">
-		<H1>MISSION TT</H1>
-		<img src="./assets/timeless-clock.gif" alt="This is an animated gif image, but it does not move" width="200vw"/>
-	<!-- <video autoplay muted loop>
-		<source src="./assets/stock-footage-droste-effect-clock.webm" type="video/webm">
-	  Your browser does not support the video tag.
-	  </video> -->
-	  <h1>START: </h1>
-	  <h1 id="demo"></h1>
-	  <div class="height"></div>
-	  <a href="./home-1.html"><button><h2>Lees bericht</h2></button></a>
-	  <a href="./paklijst.html"><button><h2>Paklijst en Kookschema</h2></button></a>
-	  <a href="./timetable.html"><button><h2>Timetraveltable</h2></button></a>
-	</div>
-	
-</body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foret 4 Ever</title>
+    <link rel="stylesheet" href="index.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        // Set the date we're counting down to
+        var countDownDate = new Date("August 16, 2024 16:00:00").getTime();
 
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+            // Get today's date and time
+            var now = new Date().getTime();
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            // Display the result in the element with id="demo"
+            document.getElementById("demo").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("demo").innerHTML = "HET IS BEGONNEN";
+            }
+        }, 1000);
+
+		var teams = {
+			"duisternis": {"members": ["Jelmer", "Romany", "Vincent", "Evelien", "Karsten", "Niels", "Eva"], "color": "Rood"},
+			"demoon": {"members": ["Floris", "Suus", "Pim", "Eszter", "Rochaya", "Tadesse", "Pelle"], "color": "Blauw"},
+			"dracula": {"members": ["Lirry", "Rogier", "Laura", "Joni", "Joost", "Rozan", "Coen"], "color": "Groen"},
+			"donker": {"members": ["Eli", "Anika", "Lotte", "Flore", "Farbod", "Machiel", "Nathalie", "Wietze"], "color": "Geel"}
+		};
+
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('.section');
+            sections.forEach(function(section) {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+
+		function handlePasscode() {
+            var passcode = document.getElementById('passcodeInput').value;
+            var team = teams[passcode];
+            var teamDisplay = document.getElementById('teamDisplay');
+            if (team) {
+				if(team.color.toLowerCase() == "rood"){
+					teamDisplay.innerHTML = `<h1 style="color: red;">Team ${team.color}</h1><ul>` + 
+                    team.members.map(member => `<h2 style="color: red; text-shadow: 
+	-1px -1px 0 #000,  
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	1px 1px 0 #000;">${member} </h2> `).join('') + '</ul>';
+                	teamDisplay.classList.remove('hidden');
+				} 
+				if(team.color.toLowerCase() == "groen"){
+					teamDisplay.innerHTML = `<h1 style="color: green;">Team ${team.color}</h1><ul>` + 
+                    team.members.map(member => `<h2 style="color: green; text-shadow: 
+	-1px -1px 0 #000,  
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	1px 1px 0 #000;">${member} </h2> `).join('') + '</ul>';
+                	teamDisplay.classList.remove('hidden');
+				}
+				if(team.color.toLowerCase() == "blauw"){
+					teamDisplay.innerHTML = `<h1 style="color: blue;">Team ${team.color}</h1><ul>` + 
+                    team.members.map(member => `<h2 style="color: blue; text-shadow: 
+	-1px -1px 0 #000,  
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	1px 1px 0 #000;">${member} </h2> `).join('') + '</ul>';
+                	teamDisplay.classList.remove('hidden');
+				}
+				if(team.color.toLowerCase() == "geel"){
+					teamDisplay.innerHTML = `<h1 style="color: yellow;">Team ${team.color}</h1><ul>` + 
+                    team.members.map(member => `<h2 style="color: yellow; text-shadow: 
+	-1px -1px 0 #000,  
+	1px -1px 0 #000,
+	-1px 1px 0 #000,
+	1px 1px 0 #000;">${member} </h2> `).join('') + '</ul>';
+                	teamDisplay.classList.remove('hidden');
+				}
+
+            } else {
+                teamDisplay.innerHTML = '<p>Foute code, probeer het nog is nooby</p>';
+                teamDisplay.classList.remove('hidden');
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const enterBtn = document.getElementById('enterBtn');
+            const overlay = document.getElementById('overlay');
+            const content = document.getElementById('content');
+            const playBtn = document.getElementById('playBtn');
+            const stopBtn = document.getElementById('stopBtn');
+            const audioPlayer = document.getElementById('audioPlayer');
+
+            enterBtn.addEventListener('click', () => {
+                overlay.style.display = 'none';
+                content.classList.remove('hidden');
+                content.classList.add('visible');
+				audioPlayer.play();
+            });
+
+            playBtn.addEventListener('click', () => {
+                audioPlayer.play();
+            });
+
+            stopBtn.addEventListener('click', () => {
+                audioPlayer.pause();
+                audioPlayer.currentTime = 0;
+            });
+        });
+    </script>
+</head>
+<body onload="showSection('home')">
+    <div id="overlay">
+        <button id="enterBtn">Treed binnen</button>
+    </div>
+
+
+
+    <div id="content" class="hidden">
+		<div class="audio-controls">
+			<button id="playBtn"><i class="fas fa-play"></i></button>
+			<button id="stopBtn"><i class="fas fa-stop"></i></button>
+		</div>
+	
+		<audio id="audioPlayer" src="./assets/uruk.mp3"></audio>
+        <div id="home" class="section">
+            <div class="center">
+                <h1>Foret 4 Ever - Congres van het kwaad</h1>
+                <!-- <img src="./assets/foret-forever.png" alt="Foret Forever" width="400px"/> -->
+                <h1>START:</h1>
+                <h1 id="demo"></h1>
+                <div class="height"></div>
+                <button onclick="showSection('message')"><h3>Lees bericht</h3></button>
+                <button onclick="showSection('paklijst')"><h3>Paklijst en Kookschema</h3></button>
+                <button onclick="showSection('timetable')"><h3>Agenda van Ellende</h3></button>
+				<button onclick="showSection('team')"><h3>Mijn team</h3></button>
+            </div>
+        </div>
+
+        <div id="message" class="section" style="display: none;">
+			<div class="centerhome">
+				<h1>
+					Aan alle meest gevreesde en snode slechteriken,
+				</h1>
+				<div class="heighthalf"></div>
+				<div id="brieftext">
+					Wij, Eclipse, Lurkmiri, Jinxmar, & Fathom, de vier opperste heersers der duisternis - nodigen jullie uit voor het geheime congres van het kwaad. Het belooft een weekend vol sinistere activiteiten en kwaadaardige samenzweringen te worden. Echter met 1 doel. Wellicht dat je er al lucht van hebt gekregen via het schurkennieuws: Wij hebben sterke vermoedens dat De Scepter der Eindeloze Duisternis zich bevindt in Le Château de Balmoral, ons onderkomen voor het weekend.
+				</div>
+				<div class="heighthalf"></div>
+				<div id="brieftext">
+					Tussen de bomen, uitkijkend over de donkere bossen van de Ardennen bevindt zich Le Chateau de Balmoral. Een majestueus kasteel met imposante torens, kantelen, eeuwenoude stenen muren en een helderblauwe plonsvijver vol met piranha’s. Het kasteel is al eeuwenlang gehuld in een duister mysterie. Volgens de legende is het gebouwd op de ruïnes van een nog ouder fort dat in de Middeleeuwen door een geheim genootschap van alchemisten werd gebruikt. Deze alchemisten, bekend als het "Broederschap van de Zwarte Zon," hielden zich bezig met het creëren van krachtige, duistere elixers en artefacten. Hun ultieme doel was om een magisch artefact te maken dat hen in staat zou stellen om de wereld te beheersen: de Scepter van Eindeloze Duisternis. Het Broederschap werd echter verraden door een van hun eigen leden en verdween spoorloos, maar hun werk en de scepter bleven diep onder het kasteel verborgen en sommigen beweren dat er nog maar enkele handelingen nodig waren om de Scepters onmeetbare krachten te ontketenen..
+				</div>
+				<div class="heightquarter"></div>
+				<div id="brieftext">
+					Na drie duister succesvolle edities van hetgeen wij Foret zijn gaan noemen, is onze honger naar chaos en overheersing alleen maar gegroeid. Daarnaast kwam tot onze aandacht dat het verschrikkelijk goed gaat met de wereld. Iets waar onze handen van gaan jeuken.
+				</div>
+				<div class="heightquarter"></div>
+				<div id="brieftext">
+					Uit de wirwar van onze gedachten ontstonden er verschillende sinistere plannen, verwoestende ideeën en bovenal een onverzadigbare dorst naar totale controle. We willen we dit jaar meer. Veel meer. We willen de scepter zwaaien. En die zullen we vinden! Dit is het begin van een eeuwige nachtmerrie, een schrikbewind dat geen grenzen kent onder de noemer: <h1>FORET 4 EVER</h1>
+				</div>
+				<div class="heightquarter"></div>
+				<div id="brieftext">
+					Maar voor dit duistere meesterplan hebben wij jullie, onze meest gevreesde bondgenoten, nodig om deze visioenen van terreur werkelijkheid te maken. En weet: Je bent niet zomaar uitgenodigd. Wij zien in jou een bondgenoot om samen met ons een regime van duisternis te introduceren. Je bent geboren voor het kwaad en we vertrouwen op je slechtheid. Of je nou Harry Potter wilt vermoorden, met een leger white walkers het Noorden in een eeuwige winter wilt hullen of gewoon Bassie en Adriaan wilt tegenhouden, jij hoort bij ons.
+				</div>
+				<div class="heightquarter"></div>
+				<div id="brieftext">
+					Maar wees gewaarschuwd, want net als bij het Broederschap van de Zwarte Zon kunnen er verraders in ons midden zijn. En onze geheime bijeenkomst zal mogelijk geïnfiltreerd worden door vermomde helden die ons willen tegenwerken.     </div>
+				<div class="heightquarter"></div>
+				<div id="brieftext">
+					Er zullen overvloedige hoeveelheden borrelende en geestverruimende elixers zijn om onze verwoestende dorst te lessen. Verder zullen we zorgen voor tafels vol met de ranzigste verdorvenheden. En zodra we vinden dat we genoeg hebben gedaan voor de wereldoverheersing, is het tijd voor ongekende zon en zaligheid aan de kristalheldere piranhapoel, een sprookjesachtige beloning die zelfs de donkerste harten in extase zal brengen.
+				</div>
+				<div class="heightquarter"></div>
+				<div id="brieftext">
+					Je zult dit alles niet alleen doen, maar je wordt opgezadeld met anderen die ongetwijfeld zullen beweren minstens zo slecht te zijn als jij. De vraag is of jullie slechtheid samen groter is dan de som der delen. Of is dubbel negatief toch positief? Via ons zeer geheime encrypted signalennetwerk waarop geen enkele entiteit kan meelezen, maken we de indeling van de teams bekend. Met je team zul je ook verantwoordelijk zijn voor het verzorgen van een deel van de versnaperingen.
+				</div>
+				<div class="heightquarter"></div>
+				<div id="brieftext">
+					We kijken uit naar jullie komst en naar de verbijsterende plannen die we samen zullen smeden. Laten we samen genieten van een weekend vol chaos en bovenal verschrikkelijk decadent en verboden plezier!
+				</div>
+				<div class="heighthalf"></div>
+				<div class="heighthalf"></div>
+				<div id="brieftext">
+					Ondertekend door de Vier Opperste Schurken:
+				</div>
+				<div class="heighthalf"></div>
+				<div id="brieftext">
+					Eclipse, Lurkmiri, Jinxmar, & Fathom
+				</div>
+				<div id="brieftextklein">
+					*Wellicht ken je ons enkel onder onze aliassen Eli B., Joseph StaLir, Jeldemort & Floridouan Taghi.
+				</div>
+				<div class="heighthalf"></div>
+				<img style="max-width: 100%;" src="./assets/evil-witch-laugh.gif" alt="Local GIF">
+				<div class="heighthalf"></div>
+				<button onclick="showSection('home')"><h3>Terug</h3></button>
+			</div>
+        </div>
+
+        <div id="paklijst" class="section" style="display: none;">
+            <div class="center">
+                <img src="./assets/jack-nicholson-jack.gif" alt="Local GIF">
+                <h1><span style="text-decoration: underline">Paklijst</span></h1>
+                <div class="heighthalf"></div>
+                <div class="heightquarter"></div>
+				<h1>
+                    •	Slecht humeur
+				</h1>
+				<h1>
+                    •	Schurken/Boeven pak  
+				</h1>
+                <h1>
+                    •	Schurkenspeedo of bandietenbikin  
+				</h1>
+                <h1>
+                    •	Fles bijzonder elixer per team
+                <h1>
+				<h1>
+                    •	Moordwapen
+                <h1>
+				<h1>
+					•   Plannen voor Wereldheerschappij - Inclusief back-up plannen voor als het misgaat
+				<h1>
+                <div class="height"></div>
+                <h1><span style="text-decoration: underline">Kook schema</span></h1>
+                <div class="heightquarter"></div>
+				<h1>17 Augustus Lunch - <span style="color:red">Team Rood</span></h1>
+				<h1>17 Augustus Diner - <span style="color:blue">Team Blauw</span></h1>
+				<h1>18 Augustus Lunch - <span style="color:green">Team Groen</span></h1>
+				<h1>18 Augustus Diner- <span style="color: yellow">Team Geel</span></h1>
+                <div class="height"></div>
+                <button onclick="showSection('home')"><h3>Terug</h3></button>
+            </div>
+        </div>
+
+        <div id="timetable" class="section" style="display: none;">
+            <div class="center">
+                <h1>Agenda van Ellende</h1>
+				<img src="./assets/dr-evil.gif" alt="Local GIF">
+    <div class="bullet-point">
+        <h2 style="color: red;">Olympische Schurken Sprintduel - Lurkmiri vs. Krakakarst</h2>
+        <div id="brieftext">We beginnen het weekend met een meting der schurkenkrachten. Een prachtig affiche op dag 1. Waar Krakakarst en Lurkmiri beiden beweren woester te kunnen sprinten dan de ander, was er maar een oplossing: een sprintduel op leven en dood. Op wie zet jij je oneerlijk verkregen geld in?</div>
+    </div>
+    
+    <div class="bullet-point">
+        <h2 style="color: red;"> Rad van Onfortuin</h2>
+        <div id="brieftext">Ons duistere lot krijgt een onverwachte twist. Draai aan het wiel en ontdek welk onheil je te wachten staat.</div>
+    </div>
+    
+    <div class="bullet-point">
+        <h2 style="color: red;">Levend Stratego</h2>
+        <div id="brieftext">Elimineer moordlustige medeschurken en verover artefacten voor de Scepter van Eindeloze Duisternis.</div>
+    </div>
+    
+    <div class="bullet-point">
+        <h2 style="color: red;">Onheilspellende Deuntjes</h2>
+        <div id="brieftext">Elke avond, wanneer onze geliefde duisternis valt, zullen verschillende schurken duistere klanken laten horen die je ziel doen huiveren. Laat de tonen van het donker de nacht vullen.</div>
+    </div>
+
+	<div class="bullet-point">
+        <h2 style="color: red;">Vertoon je op het bal der bandieten</h2>
+        <div id="brieftext">Elke schavuit weet hoe eminent het is er huiveringwekkend en angstaanjagend uit te zien. Deze galavoorstelling wordt besloten met een stemming en een mysterieuze beloning wacht degene wiens verschijning het meest verontrustend is.</div>
+    </div>
+
+                <button onclick="showSection('home')"><h3>Terug</h3></button>
+            </div>
+        </div>
+
+		<div id="team" class="section" style="display: none;">
+            <div class="center">
+                <h1>Vul hier je geheime wachtwoord in en zie je duistere teamgenoten:</h1>
+                <input type="text" id="passcodeInput" placeholder="Enter passcode">
+                <button onclick="handlePasscode()">Invoer</button>
+                <div id="teamDisplay"></div>
+                <div class="height"></div>
+                <button onclick="showSection('home')"><h3>Terug</h3></button>
+            </div>
+        </div>
+    </div>
+</body>
 </html>

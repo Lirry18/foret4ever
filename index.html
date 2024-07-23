@@ -6,6 +6,9 @@
     <title>Foret 4 Ever</title>
     <link rel="stylesheet" href="index.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap" rel="stylesheet">
     <script>
         // Set the date we're counting down to
         var countDownDate = new Date("August 16, 2024 16:00:00").getTime();
@@ -45,53 +48,46 @@
             document.getElementById(sectionId).style.display = 'block';
         }
 
-		function handlePasscode() {
+		
+        function handlePasscode() {
             var passcode = document.getElementById('passcodeInput').value;
-            var team = teams[passcode];
             var teamDisplay = document.getElementById('teamDisplay');
-            if (team) {
-				if(team.color.toLowerCase() == "rood"){
-					teamDisplay.innerHTML = `<h1 style="color: red;">Team ${team.color}</h1><ul>` + 
-                    team.members.map(member => `<h2 style="color: red; text-shadow: 
-	-1px -1px 0 #000,  
-	1px -1px 0 #000,
-	-1px 1px 0 #000,
-	1px 1px 0 #000;">${member} </h2> `).join('') + '</ul>';
-                	teamDisplay.classList.remove('hidden');
-				} 
-				if(team.color.toLowerCase() == "groen"){
-					teamDisplay.innerHTML = `<h1 style="color: green;">Team ${team.color}</h1><ul>` + 
-                    team.members.map(member => `<h2 style="color: green; text-shadow: 
-	-1px -1px 0 #000,  
-	1px -1px 0 #000,
-	-1px 1px 0 #000,
-	1px 1px 0 #000;">${member} </h2> `).join('') + '</ul>';
-                	teamDisplay.classList.remove('hidden');
-				}
-				if(team.color.toLowerCase() == "blauw"){
-					teamDisplay.innerHTML = `<h1 style="color: blue;">Team ${team.color}</h1><ul>` + 
-                    team.members.map(member => `<h2 style="color: blue; text-shadow: 
-	-1px -1px 0 #000,  
-	1px -1px 0 #000,
-	-1px 1px 0 #000,
-	1px 1px 0 #000;">${member} </h2> `).join('') + '</ul>';
-                	teamDisplay.classList.remove('hidden');
-				}
-				if(team.color.toLowerCase() == "geel"){
-					teamDisplay.innerHTML = `<h1 style="color: yellow;">Team ${team.color}</h1><ul>` + 
-                    team.members.map(member => `<h2 style="color: yellow; text-shadow: 
-	-1px -1px 0 #000,  
-	1px -1px 0 #000,
-	-1px 1px 0 #000,
-	1px 1px 0 #000;">${member} </h2> `).join('') + '</ul>';
-                	teamDisplay.classList.remove('hidden');
-				}
+            
+            if (passcode === 'foret4ever') { // Replace 'your-password' with the actual passcode
+                teamDisplay.innerHTML = ''; // Clear previous content
 
-            } else {
-                teamDisplay.innerHTML = '<p>Foute code, probeer het nog is nooby</p>';
+                for (var team in teams) {
+                    var teamInfo = teams[team];
+                    var color = teamInfo.color.toLowerCase();
+					var colorStyle = "";
+					if(color == "geel"){
+						colorStyle = "yellow"
+					}
+					if(color == "groen"){
+						colorStyle = "green"
+					}
+					if(color == "blauw"){
+						colorStyle = "blue";
+					}
+					if(color == "rood"){
+						colorStyle = "red";
+					}
+
+                    teamDisplay.innerHTML += `<h1 style="color: ${colorStyle};">Team ${teamInfo.color}</h1><ul>` + 
+                        teamInfo.members.map(member => `<h2 style="color: ${colorStyle}; text-shadow: 
+                            -1px -1px 0 #000,  
+                            1px -1px 0 #000,
+                            -1px 1px 0 #000,
+                            1px 1px 0 #000;">${member}</h2>`).join('') + '</ul>';
+                }
+
                 teamDisplay.classList.remove('hidden');
+            } else {
+                alert('Incorrect passcode!');
+                teamDisplay.classList.add('hidden');
             }
         }
+           
 
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -141,7 +137,7 @@
                 <h1>START:</h1>
                 <h1 id="demo"></h1>
                 <div class="height"></div>
-                <button onclick="showSection('message')"><h3>Lees bericht</h3></button>
+                <button onclick="showSection('message')"><h3>Uitnodiging</h3></button>
                 <button onclick="showSection('paklijst')"><h3>Paklijst en Kookschema</h3></button>
                 <button onclick="showSection('timetable')"><h3>Agenda van Ellende</h3></button>
 				<button onclick="showSection('team')"><h3>Mijn team</h3></button>
@@ -208,13 +204,16 @@
         </div>
 
         <div id="paklijst" class="section" style="display: none;">
-            <div class="center">
-                <img src="./assets/jack-nicholson-jack.gif" alt="Local GIF">
+            <div class="centerhome">
+                <img style="max-width: 100%;" src="./assets/jack-nicholson-jack.gif" alt="Local GIF">
                 <h1><span style="text-decoration: underline">Paklijst</span></h1>
                 <div class="heighthalf"></div>
                 <div class="heightquarter"></div>
 				<h1>
                     •	Slecht humeur
+				</h1>
+				<h1>
+                    •	Zonnebrand
 				</h1>
 				<h1>
                     •	Schurken/Boeven pak  
@@ -244,9 +243,9 @@
         </div>
 
         <div id="timetable" class="section" style="display: none;">
-            <div class="center">
+            <div class="centerhome">
                 <h1>Agenda van Ellende</h1>
-				<img src="./assets/dr-evil.gif" alt="Local GIF">
+				<img style="max-width: 100%;" src="./assets/dr-evil.gif" alt="Local GIF">
     <div class="bullet-point">
         <h2 style="color: red;">Olympische Schurken Sprintduel - Lurkmiri vs. Krakakarst</h2>
         <div id="brieftext">We beginnen het weekend met een meting der schurkenkrachten. Een prachtig affiche op dag 1. Waar Krakakarst en Lurkmiri beiden beweren woester te kunnen sprinten dan de ander, was er maar een oplossing: een sprintduel op leven en dood. Op wie zet jij je oneerlijk verkregen geld in?</div>
@@ -277,7 +276,7 @@
         </div>
 
 		<div id="team" class="section" style="display: none;">
-            <div class="center">
+            <div class="centerhome">
                 <h1>Vul hier je geheime wachtwoord in en zie je duistere teamgenoten:</h1>
                 <input type="text" id="passcodeInput" placeholder="Enter passcode">
                 <button onclick="handlePasscode()">Invoer</button>
